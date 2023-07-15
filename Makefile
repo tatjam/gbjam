@@ -109,11 +109,17 @@ endif
 # "Source" assets can thus be safely stored there without `make clean` removing them
 VPATH := src
 
+res/%.png.tilemap: res/%.png
+	echo $(basename $(@F))
+	@$(MKDIR_P) $(@D)
+	rgbgfx $< -a res/$(basename $(@F)).attrmap -m -o res/$(basename $(@F)).tiles -t $@
+
 # Define how to compress files using the PackBits16 codec
 # Compressor script requires Python 3
-res/%.pb16: src/tools/pb16.py res/%
-	@$(MKDIR_P) $(@D)
-	$^ $@
+#res/%.pb16: src/tools/pb16.py res/%
+#	@$(MKDIR_P) $(@D)
+#	$^ $@
+
 
 # Catch non-existent files
 # KEEP THIS LAST!!

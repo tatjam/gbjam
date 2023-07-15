@@ -1,3 +1,4 @@
+INCLUDE "include/hardware.inc/hardware.inc"
 
 SECTION "Header", ROM0[$100]
 
@@ -17,5 +18,6 @@ SECTION "Header", ROM0[$100]
 SECTION "Entry point", ROM0
 
 EntryPoint:
-	; Here is where the fun begins, happy coding :)
 	jr @
+
+incbin "res/test_image_to_tiles.png.tilemap"
